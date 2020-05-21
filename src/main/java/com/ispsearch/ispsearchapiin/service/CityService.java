@@ -34,10 +34,10 @@ public class CityService {
 
     //retrieve city based on name
     public City getCity(String name){
-        if (cityRepository.findByName(name)==null){
+        if (cityRepository.findByCityName(name)==null){
             throw new RuntimeException("City does not exist in db");
         }
-        return cityRepository.findByName(name);
+        return cityRepository.findByCityName(name);
     }
 
     //delete city based on id
@@ -55,7 +55,11 @@ public class CityService {
     //update a city
     public City updateCity(City newCity){
         City dbCity = cityRepository.findById(newCity.getCityId()).orElse(null);
-        dbCity.setCityName(newCity.getCityName());
-        return cityRepository.save(dbCity);
+        if(dbCity != null){
+            dbCity.setCityName(newCity.getCityName());
+            return cityRepository.save(dbCity);
+        }
+        else throw new RuntimeException("City not found!");
+
     }
 }
