@@ -1,32 +1,45 @@
 package com.ispsearch.ispsearchapiin.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class City {
+@Table(name = "city")
+public class City implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue
-    @Column(name = "CITY_ID")
-    private int id;
-    @Column(name = "CITY_NAME")
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(insertable = false, name = "CITY_ID", nullable = false)
+    private Integer cityId;
 
-    public int getId() {
-        return id;
+    @Column(name = "CITY_NAME", nullable = false)
+    private String cityName;
+
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
-    public String getName() {
-        return name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String toString() {
+      return "City{cityId=" + cityId + 
+        ", cityName=" + cityName + 
+        "}";
     }
 }
