@@ -48,7 +48,7 @@ public class Isp implements Serializable {
     private String ispUrl;
 
     @Column(name = "ISVERIFIED", nullable = false)
-    private Integer ISVERIFIED = 0;
+    private boolean ISVERIFIED = false;
 
     public LocalDateTime getCreateDate() {
         return createDate;
@@ -146,11 +146,11 @@ public class Isp implements Serializable {
         this.ispUrl = ispUrl;
     }
 
-    public Integer getISVERIFIED() {
+    public boolean getISVERIFIED() {
         return ISVERIFIED;
     }
 
-    public void setISVERIFIED(Integer ISVERIFIED) {
+    public void setISVERIFIED(boolean ISVERIFIED) {
         this.ISVERIFIED = ISVERIFIED;
     }
 

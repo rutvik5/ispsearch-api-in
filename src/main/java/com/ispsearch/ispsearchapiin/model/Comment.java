@@ -26,8 +26,8 @@ public class Comment implements Serializable {
     @Column(name = "LIKE_COUNT", nullable = false)
     private Integer likeCount;
 
-    @Column(name = "USER_ID", nullable = false)
-    private Integer userId;
+    @Column(name = "CUSTOMER_ID", nullable = false)
+    private Integer customerId;
 
     public Integer getCommentId() {
         return commentId;
@@ -70,11 +70,11 @@ public class Comment implements Serializable {
     }
 
     public Integer getUserId() {
-        return userId;
+        return customerId;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.customerId = userId;
     }
 
     public String toString() {
@@ -83,7 +83,7 @@ public class Comment implements Serializable {
         ", createDate=" + createDate + 
         ", dislikeCount=" + dislikeCount + 
         ", likeCount=" + likeCount + 
-        ", userId=" + userId + 
+        ", userId=" + customerId + 
         "}";
     }
 }

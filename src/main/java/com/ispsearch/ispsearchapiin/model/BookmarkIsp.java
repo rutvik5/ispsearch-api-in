@@ -16,8 +16,8 @@ public class BookmarkIsp implements Serializable {
     @Column(name = "ISP_ID", nullable = false)
     private Integer ispId;
 
-    @Column(name = "USER_ID", nullable = false)
-    private Integer userId;
+    @Column(name = "CUSTOMER_ID", nullable = false)
+    private Integer customerId;
 
     public Integer getBookmarkIspId() {
         return bookmarkIspId;
@@ -36,17 +36,17 @@ public class BookmarkIsp implements Serializable {
     }
 
     public Integer getUserId() {
-        return userId;
+        return customerId;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.customerId = userId;
     }
 
     public String toString() {
       return "BookmarkIsp{bookmarkIspId=" + bookmarkIspId + 
         ", ispId=" + ispId + 
-        ", userId=" + userId + 
+        ", userId=" + customerId + 
         "}";
     }
 }

@@ -16,8 +16,8 @@ public class BookmarkPlan implements Serializable {
     @Column(name = "PLAN_ID", nullable = false)
     private Integer planId;
 
-    @Column(name = "USER_ID", nullable = false)
-    private Integer userId;
+    @Column(name = "CUSTOMER_ID", nullable = false)
+    private Integer customerId;
 
     public Integer getBookmarkPlanId() {
         return bookmarkPlanId;
@@ -36,17 +36,17 @@ public class BookmarkPlan implements Serializable {
     }
 
     public Integer getUserId() {
-        return userId;
+        return customerId;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.customerId = userId;
     }
 
     public String toString() {
       return "BookmarkPlan{bookmarkPlanId=" + bookmarkPlanId + 
         ", planId=" + planId + 
-        ", userId=" + userId + 
+        ", userId=" + customerId + 
         "}";
     }
 }

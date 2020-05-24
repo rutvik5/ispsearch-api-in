@@ -1,6 +1,20 @@
 package com.ispsearch.ispsearchapiin.service;
 
+import com.ispsearch.ispsearchapiin.repository.BookmarkIspRepository;
+import com.ispsearch.ispsearchapiin.repository.BookmarkPlanRepository;
+import com.ispsearch.ispsearchapiin.repository.CityPincodeRepository;
 import com.ispsearch.ispsearchapiin.repository.CityRepository;
+import com.ispsearch.ispsearchapiin.repository.CommentRepository;
+import com.ispsearch.ispsearchapiin.repository.CustomerRepository;
+import com.ispsearch.ispsearchapiin.repository.IspPincodeRepository;
+import com.ispsearch.ispsearchapiin.repository.IspRepository;
+import com.ispsearch.ispsearchapiin.repository.IspReviewRepository;
+import com.ispsearch.ispsearchapiin.repository.PincodeRepository;
+import com.ispsearch.ispsearchapiin.repository.PlanPincodeRepository;
+import com.ispsearch.ispsearchapiin.repository.PlanRepository;
+import com.ispsearch.ispsearchapiin.repository.PlanReviewRepository;
+import com.ispsearch.ispsearchapiin.repository.StateCityRepository;
+import com.ispsearch.ispsearchapiin.repository.StateRepository;
 import com.ispsearch.ispsearchapiin.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +23,9 @@ import java.util.List;
 
 @Service
 public class CityService {
-    @Autowired
-    private CityRepository cityRepository;
+    
+	@Autowired
+    private CityRepository cityRepository;    
 
     // saves a new city to db
     public City saveCity(City city){

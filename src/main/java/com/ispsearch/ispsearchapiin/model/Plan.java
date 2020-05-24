@@ -18,10 +18,10 @@ public class Plan implements Serializable {
     private Integer DURATION = 0;
 
     @Column(name = "IS_DISCOUNT_ACTIVE", nullable = false)
-    private Integer discountActive = 0;
+    private boolean discountActive = false;
 
     @Column(name = "IS_PLAN_ACTIVE", nullable = false)
-    private Integer planActive = 1;
+    private boolean planActive = true;
 
     @Column(name = "ISP_ID", nullable = false)
     private Integer ispId;
@@ -70,19 +70,19 @@ public class Plan implements Serializable {
         this.DURATION = DURATION;
     }
 
-    public Integer getDiscountActive() {
+    public boolean getDiscountActive() {
         return discountActive;
     }
 
-    public void setDiscountActive(Integer discountActive) {
+    public void setDiscountActive(boolean discountActive) {
         this.discountActive = discountActive;
     }
 
-    public Integer getPlanActive() {
+    public boolean getPlanActive() {
         return planActive;
     }
 
-    public void setPlanActive(Integer planActive) {
+    public void setPlanActive(boolean planActive) {
         this.planActive = planActive;
     }
 

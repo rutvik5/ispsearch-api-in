@@ -28,7 +28,7 @@ public class CityController {
     // GET method to retrieve a list of cities present in db
     @GetMapping("/getAllCities")
     public List<City> getAllCities(){
-        return cityService.getCities();
+    	return cityService.getCities();
     }
 
     // GET method to retrieve city based on id
