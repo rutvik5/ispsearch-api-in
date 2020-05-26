@@ -35,6 +35,10 @@ public class Customer implements Serializable {
     @Column(name = "CUSTOMER_STATE_ID", nullable = false)
     private Integer customerStateId;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -43,71 +47,73 @@ public class Customer implements Serializable {
         this.createDate = createDate;
     }
 
-    public Integer getUserCityId() {
+    public Integer getCustomerCityId() {
         return customerCityId;
     }
 
-    public void setUserCityId(Integer userCityId) {
-        this.customerCityId = userCityId;
+    public void setCustomerCityId(Integer customerCityId) {
+        this.customerCityId = customerCityId;
     }
 
-    public String getUserEmail() {
+    public String getCustomerEmail() {
         return customerEmail;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.customerEmail = userEmail;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
-    public Integer getUserId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.customerId = userId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public String getUserName() {
+    public String getCustomerName() {
         return customerName;
     }
 
-    public void setUserName(String userName) {
-        this.customerName = userName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getUserPass() {
+    public String getCustomerPass() {
         return customerPass;
     }
 
-    public void setUserPass(String userPass) {
-        this.customerPass = userPass;
+    public void setCustomerPass(String customerPass) {
+        this.customerPass = customerPass;
     }
 
-    public Integer getUserPincodeId() {
+    public Integer getCustomerPincodeId() {
         return customerPincodeId;
     }
 
-    public void setUserPincodeId(Integer userPincodeId) {
-        this.customerPincodeId = userPincodeId;
+    public void setCustomerPincodeId(Integer customerPincodeId) {
+        this.customerPincodeId = customerPincodeId;
     }
 
-    public Integer getUserStateId() {
+    public Integer getCustomerStateId() {
         return customerStateId;
     }
 
-    public void setUserStateId(Integer userStateId) {
-        this.customerStateId = userStateId;
+    public void setCustomerStateId(Integer customerStateId) {
+        this.customerStateId = customerStateId;
     }
 
+    @Override
     public String toString() {
-      return "User{createDate=" + createDate + 
-        ", userCityId=" + customerCityId + 
-        ", userEmail=" + customerEmail + 
-        ", userId=" + customerId + 
-        ", userName=" + customerName + 
-        ", userPass=" + customerPass + 
-        ", userPincodeId=" + customerPincodeId + 
-        ", userStateId=" + customerStateId + 
-        "}";
+        return "Customer{" +
+                "createDate=" + createDate +
+                ", customerCityId=" + customerCityId +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", customerPass='" + customerPass + '\'' +
+                ", customerPincodeId=" + customerPincodeId +
+                ", customerStateId=" + customerStateId +
+                '}';
     }
 }
