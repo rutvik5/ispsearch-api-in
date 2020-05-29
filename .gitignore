@@ -6,6 +6,9 @@ bin/
 !**/src/main/**
 !**/src/test/**
 
+### Node Modules ###
+node_modules
+
 ### STS ###
 .apt_generated
 .classpath
