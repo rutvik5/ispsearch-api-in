@@ -15,6 +15,7 @@ import com.ispsearch.ispsearchapiin.model.State;
 import com.ispsearch.ispsearchapiin.repository.IspPincodeRepository;
 import com.ispsearch.ispsearchapiin.repository.IspRepository;
 import com.ispsearch.ispsearchapiin.repository.PincodeRepository;
+import com.ispsearch.ispsearchapiin.utils.ISPSearchUtils;
 
 @Service
 public class IspService {
@@ -36,7 +37,7 @@ public class IspService {
 	
 	public List<IspDTO> getAllProviders(){
 		List<IspDTO> providers = new ArrayList<>();
-		List<Isp> isps = ispRepository.findAll();
+		List<Isp> isps = ispRepository.findByIsVerified(true);
 		for(Isp isp : isps) {
 			IspDTO ispDTO = getIspDTOFromIsp(isp);
 			providers.add(ispDTO);
@@ -45,13 +46,11 @@ public class IspService {
 	}
 	
 	public List<IspDTO> getAllProvidersForPincode(String pincode){
-		int pincodeValue;
-		try {
-			pincodeValue = Integer.parseInt(pincode);
-		} catch (NumberFormatException e) {
-			return null;
-		}
 		List<IspDTO> providers = new ArrayList<>();
+		Integer pincodeValue = ISPSearchUtils.getIntegerFromString(pincode).orElse(null);
+		if(null == pincodeValue) {
+			return providers;
+		}		
 		List<IspPincode> ispPincodes = new ArrayList<>();
 		Pincode pin = pincodeRepository.findByPin(pincodeValue).orElse(null);
 		if(null == pin) {
@@ -62,7 +61,7 @@ public class IspService {
 		}
 		for(IspPincode ispPincode : ispPincodes) {
 			Isp isp = ispRepository.findById(ispPincode.getIspId()).orElse(null);
-			if(null != isp) {
+			if(null != isp && isp.isVerified()) {
 				providers.add(getIspDTOFromIsp(isp));
 			}
 		}
