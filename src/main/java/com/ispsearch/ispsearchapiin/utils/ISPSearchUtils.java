@@ -1,15 +1,14 @@
 package com.ispsearch.ispsearchapiin.utils;
 
-import java.util.Optional;
-
 public class ISPSearchUtils {
 	
-	public static Optional<Integer> getIntegerFromString(String string){
+	public static boolean isNotValidPincode(String pincode) {
 		try {
-			return Optional.of(Integer.parseInt(string));
+			Integer.parseInt(pincode);
+			return false;
 		}
 		catch(NumberFormatException e) {
-			return Optional.empty();
+			return true;
 		}
 	}
 

@@ -21,12 +21,12 @@ public class IspController {
 	
 	@GetMapping("/providers")
 	public List<IspDTO> getAllProviders(){
-		return ispService.getAllProviders();
+		return ispService.getAllVerifiedProviders();
 	}
 	
 	@GetMapping("/providers/pincode/{pincode}")
 	public List<IspDTO> getAllProvidersForPincode(@PathVariable("pincode") String pincode){
-		return ispService.getAllProvidersForPincode(pincode);
+		return ispService.getAllVerifiedProvidersForValidPincode(pincode);
 	}
 
 }

@@ -12,5 +12,6 @@ import org.springframework.stereotype.Repository;
 public interface IspRepository extends JpaRepository<Isp, Integer>, JpaSpecificationExecutor<Isp> {
 	
 	public List<Isp> findByIsVerified(boolean isVerified);
+	public List<Isp> findByIspIdInAndIsVerified(List<Integer> ispIds, boolean isVerified);
 
 }
