@@ -2,7 +2,7 @@ package com.ispsearch.ispsearchapiin.utils;
 
 public class ISPSearchUtils {
 	
-	public static boolean isNotValidPincode(String pincode) {
+	public static boolean isNotValidNumber(String pincode) {
 		try {
 			Integer.parseInt(pincode);
 			return false;

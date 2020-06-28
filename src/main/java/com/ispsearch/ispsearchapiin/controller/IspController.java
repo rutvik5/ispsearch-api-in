@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ispsearch.ispsearchapiin.dto.IspDTO;
+import com.ispsearch.ispsearchapiin.dto.MessageDTO;
 import com.ispsearch.ispsearchapiin.service.IspService;
 
 @RestController
@@ -27,6 +28,11 @@ public class IspController {
 	@GetMapping("/providers/pincode/{pincode}")
 	public List<IspDTO> getAllProvidersForPincode(@PathVariable("pincode") String pincode){
 		return ispService.getAllVerifiedProvidersForValidPincode(pincode);
+	}
+	
+	@GetMapping("/providers/verify/{ispId}")
+	public MessageDTO verifyIsp(@PathVariable("ispId") String ispId) {
+		return ispService.verifyIsp(ispId);
 	}
 
 }

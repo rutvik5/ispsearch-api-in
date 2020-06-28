@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ispsearch.ispsearchapiin.dto.IspDTO;
+import com.ispsearch.ispsearchapiin.dto.MessageDTO;
 import com.ispsearch.ispsearchapiin.model.City;
 import com.ispsearch.ispsearchapiin.model.Isp;
 import com.ispsearch.ispsearchapiin.model.State;
@@ -37,13 +38,36 @@ public class IspService {
 
 	public List<IspDTO> getAllVerifiedProvidersForValidPincode(String pincode) {
 		List<IspDTO> providers = new ArrayList<>();
-		if (ISPSearchUtils.isNotValidPincode(pincode)) {
+		if (ISPSearchUtils.isNotValidNumber(pincode)) {
 			return providers;
 		}
 		Integer pincodeValue = Integer.parseInt(pincode);
 		List<Isp> isps = getAllVerifiedProvidersForPincodeFromDatabase(pincodeValue);
 		populateProviderListFromIspList(providers, isps);
 		return providers;
+	}
+
+	public List<Isp> getVerifiedIspsForListOfIspIds(List<Integer> ispIds) {
+		return ispRepository.findByIspIdInAndIsVerified(ispIds, true);
+	}
+	
+	public MessageDTO verifyIsp(String ispId) {
+		MessageDTO messageDTO = new MessageDTO();
+		if(ISPSearchUtils.isNotValidNumber(ispId)) {
+			messageDTO.setMessage("Invalid ID. Failed to verify.");
+			return messageDTO;
+		}
+		Integer ispIdValue = Integer.parseInt(ispId);
+		Isp isp = ispRepository.findById(ispIdValue).orElse(null);
+		if(isp == null) {
+			messageDTO.setMessage("Invalid ID. Failed to verify.");
+		}
+		else {
+			isp.setVerified(true);
+			ispRepository.save(isp);
+			messageDTO.setMessage("Verified successfully.");
+		}
+		return messageDTO;
 	}
 
 	private List<Isp> getAllVerifiedProvidersForPincodeFromDatabase(Integer pincodeValue) {
@@ -79,9 +103,5 @@ public class IspService {
 			IspDTO ispDTO = getIspDTOFromIsp(isp);
 			providers.add(ispDTO);
 		}
-	}
-
-	public List<Isp> getVerifiedIspsForListOfIspIds(List<Integer> ispIds) {
-		return ispRepository.findByIspIdInAndIsVerified(ispIds, true);
 	}
 }
